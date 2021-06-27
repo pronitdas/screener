@@ -18,10 +18,11 @@ from django.urls import path
 from django.conf.urls import url, include
 
 from tastypie.api import Api
-from core.resources import StockResource
+from core.resources import StockResource, StockCodeResource
 
 v1_api = Api(api_name='v1')
 v1_api.register(StockResource())
+v1_api.register(StockCodeResource())
 
 urlpatterns = [
     path('admin/', admin.site.urls),

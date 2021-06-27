@@ -11,7 +11,7 @@ class StockResource(ModelResource):
             'stock': ['exact', 'startswith'],
             'high': ['exact', 'range', 'gt', 'gte', 'lt', 'lte'],
             'low': ['exact', 'range', 'gt', 'gte', 'lt', 'lte'],
-            'volume': ['exact', 'range', 'gt', 'gte', 'lt', 'lte'],
-            
+            'volume': ['exact', 'range', 'gt', 'gte', 'lt', 'lte'],        
         }
-        
+
+   

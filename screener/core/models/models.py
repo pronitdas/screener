@@ -18,5 +18,14 @@ class Stock(models.Model):
             models.Index(fields=['date',])
         ]
 
+class StockCode(models.Model):
+    stock = models.CharField(max_length=200)
+    stock_name=models.CharField(max_length=200)
 
-        {'Open': 9.0, 'High': 9.25, 'Low': 8.75, 'Close': 9.0, 'Adj Close': 9.0, 'Volume': 10277993.0}
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['stock'], name='unique_stock'),
+        ]
+        indexes = [
+            models.Index(fields=['stock',]),
+        ]
