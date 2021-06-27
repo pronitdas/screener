@@ -2,6 +2,11 @@ import os
 from django.core.management.base import BaseCommand
 from django.utils import timezone
 import pandas as pd
+from nsetools import Nse
+import yfinance as yf
+
+
+nse = Nse()
 
 class Command(BaseCommand):
     help = 'Displays current time'
@@ -10,24 +15,17 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         time = timezone.now().strftime('%X')
         self.stdout.write("It's now %s" % time)
-        na_values = ["", 
-             "#N/A", 
-             "#N/A N/A", 
-             "#NA", 
-             "-1.#IND", 
-             "-1.#QNAN", 
-             "-NaN", 
-             "-nan", 
-             "1.#IND", 
-             "1.#QNAN", 
-             "<NA>", 
-             "N/A", 
-#              "NA", 
-             "NULL", 
-             "NaN", 
-             "n/a", 
-             "nan", 
-             "null"]
-
-        df = pd.read_csv('/home/pronit/test/screener/datadump/screenipy-result_27-06-21_19.36.48.csv')
-        print(df)
+        all_stock_codes = nse.get_stock_codes()
+        for stock in all_stock_codes:
+            if stock != 'SYMBOL':
+                data = yf.download(
+                    tickers=stock+".NS",
+                    period='300d',
+                    duration='1h',
+                    progress=False,
+                )
+                stock_price_history = data.T.to_dict().values()
+                stock
+                    
+            # print(nse.get_quo, valuete(stock))
+        
