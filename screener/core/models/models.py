@@ -7,7 +7,7 @@ class Stock(models.Model):
     low= models.FloatField()
     adj_close = models.FloatField()
     volume = models.FloatField()
-    stock = models.FloatField()
+    stock = models.CharField(max_length=200)
     
     class Meta:
         constraints = [
@@ -17,3 +17,6 @@ class Stock(models.Model):
             models.Index(fields=['stock',]),
             models.Index(fields=['date',])
         ]
+
+
+        {'Open': 9.0, 'High': 9.25, 'Low': 8.75, 'Close': 9.0, 'Adj Close': 9.0, 'Volume': 10277993.0}
