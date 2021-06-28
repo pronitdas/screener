@@ -1,6 +1,7 @@
 from django.db import models
+from psqlextra.models import PostgresModel
 
-class Stock(models.Model):
+class Stock(PostgresModel):
     open = models.FloatField()
     high = models.FloatField()
     date= models.DateField()
@@ -18,7 +19,7 @@ class Stock(models.Model):
             models.Index(fields=['date',])
         ]
 
-class StockCode(models.Model):
+class StockCode(PostgresModel):
     stock = models.CharField(max_length=200)
     stock_name=models.CharField(max_length=200)
 

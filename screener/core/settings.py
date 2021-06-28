@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'django.contrib.postgres',
+    'psqlextra'
 ]
 
 MIDDLEWARE = [
@@ -72,7 +74,7 @@ DATABASES = {
 
     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'psqlextra.backend',
         'NAME': 'screener-core',
         'USER': 'postgres',
         'PASSWORD': 'changeme',
